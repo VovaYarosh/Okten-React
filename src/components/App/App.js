@@ -70,10 +70,9 @@ class AppTheReal extends Component {
   }
 
   onApplyBtnClick() {
-    const {isDarkTheme,isChecked} = this.state;
+    const {isDarkTheme} = this.state;
            this.setState({
                isDarkTheme: !isDarkTheme,
-               isChecked: !isChecked
 
            });
        }
