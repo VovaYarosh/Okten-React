@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { people } from '../../constants/people';
 import { ButtonAsClass as Button } from '../Button/Button';
+import { Toggle } from '../Toggle/Toggle';
 import { Header } from '../Header/Header';
 import Checkbox from '../Checkbox/Checkbox';
 import { Input } from '../Input/Input';
@@ -57,6 +58,10 @@ class AppTheReal extends Component {
           label="Apply"
           className={`${CN}__btn`}
           onClick={this.onApplyBtnClick}
+        />
+        <Toggle
+           OnClick={this.onApplyBtnClick}
+
         />
       </div>
     );
