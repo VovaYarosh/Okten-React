@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { people } from '../../constants/people';
 import { ButtonAsClass as Button } from '../Button/Button';
-import { Toggle } from '../Toggle/Toggle';
 import { Header } from '../Header/Header';
-import Checkbox from '../Checkbox/Checkbox';
+import Checkbox from '../Checkbox/Checkbox'
+import Toggle from '../Toggle/Toggle';
 import { Input } from '../Input/Input';
+
 
 import './App.css';
 
@@ -46,6 +47,7 @@ class AppTheReal extends Component {
   }
 
   renderActionsBlock() {
+    const { isChecked } = this.state;
     return (
       <div className="actions-block">
         <Button
@@ -59,27 +61,29 @@ class AppTheReal extends Component {
           className={`${CN}__btn`}
           onClick={this.onApplyBtnClick}
         />
-        <Toggle
-           OnClick={this.onApplyBtnClick}
+          <Toggle label="Click me"
+                  isChecked={isChecked}
+                  onChange={this.onCheck}/>
 
-        />
       </div>
     );
   }
 
   onApplyBtnClick() {
-    const {isDarkTheme} = this.state;
+    const {isDarkTheme,isChecked} = this.state;
+           this.setState({
+               isDarkTheme: !isDarkTheme,
+               isChecked: !isChecked
 
-    this.setState({
-      isDarkTheme: !isDarkTheme
-    });
-  }
+           });
+       }
 
   onCheck(e) {
-    const { isChecked } = this.state;
+    const { isChecked,isDarkTheme } = this.state;
 
     this.setState({
-      isChecked: !isChecked
+      isChecked: !isChecked,
+      isDarkTheme: !isDarkTheme
     }, () => {
       console.log('state changed');
     });
@@ -112,9 +116,10 @@ class AppTheReal extends Component {
           {greetingElement}
         </div>
 
+
         <Checkbox label="Click me" isChecked={isChecked} onChange={this.onCheck}/>
 
-        <Input value={inputValue} onChange={this.onInputChange}/>
+        <Input value={inputValue} isChecked={isChecked} onChange={this.onApplyBtnClick}/>
         <div className="divider"/>
         <ul className="list">{renderPeopleList()}</ul>
         {this.renderActionsBlock()}
