@@ -61,38 +61,37 @@ class AppTheReal extends Component {
           className={`${CN}__btn`}
           onClick={this.onApplyBtnClick}
         />
-          <Toggle label="Click me"
-                  isChecked={isChecked}
-                  onChange={this.onCheck}/>
+        <Toggle
+          label="Click me"
+          isChecked={isChecked}
+          onChange={this.onApplyBtnClick}
+        />
 
       </div>
     );
   }
 
   onApplyBtnClick() {
-    const {isDarkTheme} = this.state;
-           this.setState({
-               isDarkTheme: !isDarkTheme,
+        const {isDarkTheme} = this.state;
+        this.setState({
+        isDarkTheme: !isDarkTheme,
+        });
+  }
 
-           });
-       }
-
-  onCheck(e) {
-    const { isChecked,isDarkTheme } = this.state;
-
-    this.setState({
-      isChecked: !isChecked,
-      isDarkTheme: !isDarkTheme
-    }, () => {
-      console.log('state changed');
-    });
+  onCheck() {
+        const { isChecked } = this.state;
+        this.setState({
+        isChecked: !isChecked,
+        }, () => {
+        console.log('state changed');
+        });
   }
 
   onInputChange = (inputValue) => {
-    this.setState({
-      inputValue
-    });
-  };
+        this.setState({
+        inputValue
+        });
+        };
 
   render() {
     const { isChecked, inputValue, isDarkTheme } = this.state;
@@ -116,9 +115,18 @@ class AppTheReal extends Component {
         </div>
 
 
-        <Checkbox label="Click me" isChecked={isChecked} onChange={this.onCheck}/>
+        <Checkbox
+            label="Click me"
+            isChecked={isChecked}
+            onChange={this.onCheck}
+        />
 
-        <Input value={inputValue} isChecked={isChecked} onChange={this.onApplyBtnClick}/>
+        <Input
+            value={inputValue}
+            isChecked={isChecked}
+            onChange={this.onInputChange}
+        />
+
         <div className="divider"/>
         <ul className="list">{renderPeopleList()}</ul>
         {this.renderActionsBlock()}
